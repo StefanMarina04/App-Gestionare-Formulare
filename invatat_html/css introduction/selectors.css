@@ -1,0 +1,23 @@
+header{
+    background-color: lightskyblue;
+}
+div{
+    background-color: lightgoldenrodyellow
+}
+footer{
+    background-color: lightcoral;
+}
+.c1 {
+    background-color: yellow;
+}
+#diffc1{
+    background-color: gold;
+}
+
+*{
+    word-spacing: 0.3cm;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    font-style: italic;
+    font-variant: small-caps;
+}

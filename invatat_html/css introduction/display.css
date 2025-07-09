@@ -1,0 +1,8 @@
+#pidiv{
+    display: flex;
+    background-color: antiquewhite;
+}
+#seconddiv{
+    display:none;
+    background-color: aqua;
+}

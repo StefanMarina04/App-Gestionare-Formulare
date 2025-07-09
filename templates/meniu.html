@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meniu Formulare</title>
+</head>
+<body>
+    <h1>Formulare disponibile:</h1>
+    <ul>
+        {% for f in formulare %}
+            <li><a href="/formular/{{ f }}">{{ f }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

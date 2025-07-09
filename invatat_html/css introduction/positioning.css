@@ -1,0 +1,19 @@
+body{
+    height: 2000px;
+}
+
+#WelcomeContainer{
+    position: relative;
+}
+
+#WelcomeDiv{
+    background-color: lightblue;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+#NameDiv{
+    background-color: lightgreen;
+    position: absolute;
+}
