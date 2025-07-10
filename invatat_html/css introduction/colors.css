@@ -1,0 +1,15 @@
+body{
+    height:100%;
+    width:100%;
+    background-color: rgb(27, 50, 177);
+}
+
+#Buna{
+    color: white;
+    /* padding: 100px 100px 100px 100px; */
+    padding:50% 50% 50% 50%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    font-style: italic;
+}

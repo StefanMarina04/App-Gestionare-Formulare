@@ -1,0 +1,20 @@
+html, body{
+    height:100%;
+    width:100%;
+}
+
+#container{
+background-color: aquamarine;
+height: 50%;
+width:50%;
+}
+
+#BineAiVenit{
+background-color: blanchedalmond;
+height:50%;
+width:50%;
+/* margin:50px; */
+/* padding:50px; */
+/* padding-left: 10px; */
+padding: 70px 30px 100px 80px; /* top right bottom left*/
+}

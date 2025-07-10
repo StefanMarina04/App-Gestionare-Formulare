@@ -1,3 +1,6 @@
+/* relative = este relativ la ceva ; static = pozitie fixa care nu se schimba niciodata ; absolute = o definesti in functie de coordonate;
+ fixed = sta in acelasi loc indiferent de unde se uita utilizatorul pe pagina ; sticky = seamana cu fixed dar se "lipeste" de varful paginii */
+
 body{
     height: 2000px;
 }
@@ -8,7 +11,7 @@ body{
 
 #WelcomeDiv{
     background-color: lightblue;
-    position: absolute;
+    position: fixed; 
     top: 50px;
     left: 50px;
 }

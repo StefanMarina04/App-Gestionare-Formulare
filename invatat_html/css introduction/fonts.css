@@ -1,0 +1,17 @@
+body{
+    height:50%;
+    width: 50%;
+    align-self: center;
+}
+
+#Buna{
+    background-color: rgb(27, 27, 180);
+    color:white;
+    padding: 25%;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+    font-style: italic;
+    text-decoration: underline purple;
+    text-align: center;
+}
