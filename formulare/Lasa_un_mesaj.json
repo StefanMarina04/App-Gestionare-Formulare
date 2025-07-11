@@ -1,8 +1,0 @@
-{
-  "titlu": "Lasa un mesaj",
-  "campuri": [
-    {"nume": "nume", "tip": "text", "eticheta": "Nume complet"},
-    {"nume": "email", "tip": "email", "eticheta": "Email"},
-    {"nume": "mesaj", "tip": "textarea", "eticheta": "Mesaj"}
-  ]
-}

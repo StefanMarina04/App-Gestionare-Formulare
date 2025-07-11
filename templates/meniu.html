@@ -2,13 +2,19 @@
 <html>
 <head>
     <title>Meniu Formulare</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='meniu.css') }}">
+
 </head>
 <body>
-    <h1>Formulare disponibile:</h1>
-    <ul>
-        {% for f in formulare %}
-            <li><a href="/formular/{{ f }}">{{ f }}</a></li>
-        {% endfor %}
-    </ul>
+    <div id="DivText">
+        <h1>Formulare disponibile:</h1>
+            <div id="ListaFormulare">
+            <ul>
+                {% for f in formulare %}
+                    <li><a href="/formular/{{ f }}">{{ f }}</a></li>
+                {% endfor %}
+            </ul>
+            </div>
+    </div>
 </body>
 </html>

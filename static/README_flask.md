@@ -1,0 +1,2 @@
+Cand lucrezi cu Flask, stilizarea paginilor web cu ajutorul fisierelor .css nu va fi aplicata daca fisierele nu se afla intr-un fisier special numit "static".
+Asa cum pentru fisiere HTML - template este necesar un folder special numit "templates".

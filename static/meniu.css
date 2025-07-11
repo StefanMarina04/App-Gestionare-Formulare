@@ -1,0 +1,84 @@
+html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height:100%;
+    width:100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     background: url("/static/fundal3.jpg");
+
+}
+
+#DivText{
+    width: 60%;
+    height: 60%;
+    max-width: 600px;
+    max-height: 800px;
+    padding: 30px;
+    border-radius: 25px; 
+    border-color: #D9D9D9;
+    border-width: 20px;
+    border-style:double;
+    position: absolute;
+    text-align: center;
+    color:white;
+    background-color: #01276c;
+    font-family:Verdana;
+    font-style:italic;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+/* a:link{
+    color: white;
+}
+a:hover{
+    color:aliceblue;
+}
+a:visited{
+    color: gray;
+}
+a:active{
+    color:aqua;
+} */
+
+a:link,
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover,
+a:active {
+    color: #ffcc00; 
+    text-decoration: none;
+}
+
+#ListaFormulare{
+    color:white;
+    height: 100%;
+    width: 100%;
+    /* background-color: rgb(3, 119, 181); */
+    font-family:Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-variant: small-caps;
+    text-align: left;
+}
+
+#ListaFormulare ul{
+    list-style:upper-latin;
+    margin-top: 50px;
+}
+
+#ListaFormulare li{
+    margin-bottom: 15px;
+}
