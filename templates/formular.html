@@ -3,10 +3,12 @@
 <head>
     <title>{{ formular.titlu }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='formular.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="DivContinut">
     <h2>{{ formular.titlu }}</h2>
-    <form method="post">
+    <form method="post" id="Formular">
         {% for camp in formular.campuri %}
             <label>{{ camp.eticheta }}</label><br>
             {% if camp.tip == 'textarea' %}
@@ -17,5 +19,6 @@
         {% endfor %}
         <input type="submit" value="Trimite">
     </form>
+    </div>
 </body>
 </html>
