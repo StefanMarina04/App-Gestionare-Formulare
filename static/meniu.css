@@ -13,28 +13,30 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-     background: url("/static/fundal3.jpg");
-
+    background: url("/static/fundal3.jpg");
 }
 
 #DivText{
     width: 60%;
     height: 60%;
+    font-size: larger;
     max-width: 600px;
     max-height: 800px;
     padding: 30px;
     border-radius: 25px; 
     border-color: #D9D9D9;
-    border-width: 20px;
-    border-style:double;
+    border-width: 5px;
+    border-style:outset;
     position: absolute;
     text-align: center;
     color:white;
-    background-color: #01276c;
-    font-family:Verdana;
+    background-color: rgba(1, 39, 108, 0.8);/*01276c - albastru bun*/
+    font-family:"Readex Pro";
     font-style:italic;
     font-weight: bold;
     font-variant: small-caps;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
 }
 
 /* a:link{
@@ -54,22 +56,26 @@ a:link,
 a:visited {
     color: white;
     text-decoration: none;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 a:hover,
 a:active {
     color: #ffcc00; 
     text-decoration: none;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
 #ListaFormulare{
     color:white;
     height: 100%;
     width: 100%;
+    font-size: larger;
     /* background-color: rgb(3, 119, 181); */
-    font-family:Verdana;
+    font-family:"Readex Pro";
     font-style: normal;
-    font-weight: bold;
+    font-weight: bolder;
+    letter-spacing: 1px;
     font-variant: small-caps;
     text-align: left;
 }
