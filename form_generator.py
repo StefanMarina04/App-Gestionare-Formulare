@@ -34,9 +34,13 @@ def formular(nume):
     if request.method == "POST":
         date_primite = request.form.to_dict()
         print("Date primite:", date_primite) 
-        return "Formular trimis cu succes!"
+        return raspuns()
 
     return render_template("formular.html", formular=template)
+
+@app.route("/formular_trimis", methods=["GET", "POST"])
+def raspuns():
+    return render_template("formular_trimis.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

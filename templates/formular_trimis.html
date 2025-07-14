@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formular completat</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='formular_trimis.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="DivContinut">
+            <h2>Formular trimis cu succes!</h2>
+            <div id="ButonMeniu">
+                <a href="{{ url_for('meniu') }}">
+                <button type="button" id="InapoiMeniu">Înapoi la meniu</button>
+            </a>
+            </div>
+            <br>
+            <div id="ButonPDF">
+                <button type="button" id="ButonExportPDF">Salvează răspunsul ca PDF</button>
+            </div>
+            <br>
+            <div id="ButonInapoi">
+                <button type="button" id="ModificaRaspuns" onclick="history.back()">Modifică răspunsul</button>
+            </div>
+        </div>
+    </body>
+</html>

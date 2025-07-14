@@ -1,0 +1,81 @@
+html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height:auto;
+    width:auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("/static/fundal3.jpg");
+}
+
+#DivContinut{
+    min-width: 500px;
+    width: auto;
+    height: auto;
+    margin: 40px auto;
+    display: flexbox;
+    font-size: larger;
+    padding: 40px;
+    border-radius: 25px; 
+    border-color: #D9D9D9;
+    border-width: 5px;
+    border-style:outset;
+    position: relative;
+    text-align: center;
+    color:white;
+    background-color: rgba(1, 39, 108, 0.8);/*01276c - albastru bun*/
+    font-family:"Readex Pro";
+    font-style:italic;
+    font-weight: bold;
+    font-variant: small-caps;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+#DivContinut h2{
+    font-size: 40px;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+#InapoiMeniu, #ModificaRaspuns, #ButonExportPDF{
+    width: auto; 
+    height: auto;
+    min-width: 350px;
+    display: flexbox;
+    font-size: 25px;
+    border-radius: 25px; 
+    border-color: #D9D9D9;
+    border-width: 5px;
+    border-style:outset;
+    position: relative;
+    text-align: center;
+    color:white;
+    background-color: rgba(1, 39, 108, 0.8);/*01276c - albastru bun*/
+    font-family:"Readex Pro";
+    font-style:italic;
+    font-weight: bold;
+    font-variant: small-caps;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    transition: all 0.25s ease, text-shadow 0.2s ease;
+}
+
+#InapoiMeniu:hover, #ModificaRaspuns:hover, #ButonExportPDF:hover{
+    background-color: #074ba4;
+    transform: scale(1.08);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    color: #ffcc00; 
+    text-decoration: none;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
