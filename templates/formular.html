@@ -6,15 +6,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
 </head>
 <body>
+    </div>
     <div id="DivContinut">
     <h2>{{ formular.titlu }}</h2>
     <form method="post" id="Formular">
         {% for camp in formular.campuri %}
             <label>{{ camp.eticheta }}</label><br>
             {% if camp.tip == 'textarea' %}
-                <textarea name="{{ camp.nume }}"></textarea><br>
+                <textarea name="{{ camp.nume }}" required></textarea><br>
             {% else %}
-                <input type="{{ camp.tip }}" name="{{ camp.nume }}"><br>
+                <input type="{{ camp.tip }}" name="{{ camp.nume }}" required><br>
             {% endif %}
         {% endfor %}
         <br>
@@ -22,6 +23,12 @@
         <button type="submit" id="ButonTrimite">Trimite</button>
     </div>
     </form>
+        <br>
+        <div id="ButonMeniu">
+        <a href="{{ url_for('meniu') }}">
+        <button type="button" id="InapoiMeniu">Înapoi la meniu</button>
+        </a>
+        </div>
     </div>
 </body>
 </html>
