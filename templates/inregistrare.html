@@ -4,6 +4,7 @@
     <title>Înregistrare</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='inregistrare.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div id="DivContinut">
@@ -18,12 +19,23 @@
             <input type="text" id="NumeInput" required>
             </div>
             <div id="DivParola">
-            <label for="ParolaInput">Parolă:</label>
-            <input type="password" id="ParolaInput" required>
+                <label for="ParolaInput">Parolă:</label>
+                <input type="password" id="ParolaInput" required>
+                <span id="togglePassword1" class="fa fa-eye" style="cursor: pointer;"></span>    
+            </div>
+            <div id="DivConfirmaParola">
+                <label for="ConfirmaParolaInput">Confirmă parola:</label>
+                <input type="password" id="ConfirmaParolaInput" required>
+                <span id="togglePassword2" class="fa fa-eye" style="cursor: pointer;"></span>    
             </div>
             <br>
             <button type="submit" id="ButonInregistrare">Înregistrează-te</button>
         </form>
+            <div id="ButonInapoi">
+                <button type="button" id="Inapoi" onclick="history.back()">Anulează</button>
+            </div>
+        </div>
     </div>
+    <script src="{{ url_for('static', filename='toggle_password_hiding.js') }}"></script>
 </body>
 </html>

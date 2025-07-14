@@ -1,8 +1,19 @@
 from flask import Flask, render_template, request, redirect
 import json
 import os
+import pyodbc
 
 app = Flask(__name__)
+
+def get_db_connection():
+    conn = pyodbc.connect(
+        'DRIVER={ODBC Driver 17 for SQL Server};'
+        'SERVER=LAPTOP-STEFAN20;'
+        'DATABASE=NUME_BAZA_DATE;'
+        # 'UID=utilizator;'
+        # 'PWD=parola'
+    )
+    return conn
 
 @app.route("/")
 def login():

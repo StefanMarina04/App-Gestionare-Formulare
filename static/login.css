@@ -72,6 +72,13 @@ body{
     min-height: 10px;
 }
 
+#DivContinut input:focus, #DivContinut textarea:focus {
+    outline: none; 
+    border: 3px solid #00aaff; 
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5); 
+    transition: 0.2s ease-in-out;
+}
+
 #EmailInput{
     position: relative;
     text-align: center;
@@ -86,6 +93,19 @@ body{
     font-family:"Readex Pro";
     font-style:normal;
     font-variant:normal;
+}
+
+#togglePassword1 {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+#togglePassword1:hover {
+    color: #ffcc00;
+    transition: all 0.3s ease-in-out;
 }
 
 #ButonConectare, #ButonInregistrare{

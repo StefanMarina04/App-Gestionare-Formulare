@@ -116,6 +116,13 @@ body{
     font-family: "Readex Pro";
 }
 
+#DivContinut input:focus, #DivContinut textarea:focus {
+    outline: none; 
+    border: 3px solid #00aaff; 
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5); 
+    transition: 0.2s ease-in-out;
+}
+
 #ButonTrimite{
     width: auto; 
     height: auto;
