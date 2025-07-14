@@ -5,7 +5,21 @@ import os
 app = Flask(__name__)
 
 @app.route("/")
-def home():
+def login():
+    return render_template("login.html")
+
+@app.route("/inregistrare", methods=["GET", "POST"])
+def inregistrare():
+    if request.method == "POST":
+        email = request.form.get("email")
+        parola = request.form.get("parola")
+        print("User registered:", email)
+        return redirect("/")  
+
+    return render_template("inregistrare.html")
+
+@app.route("/meniu", methods=["GET", "POST"])
+def meniu():
     formulare = [f.split(".")[0] for f in os.listdir("formulare") if f.endswith(".json")]
     return render_template("meniu.html", formulare=formulare)
 

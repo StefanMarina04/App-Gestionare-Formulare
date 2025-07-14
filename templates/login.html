@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Autentificare</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="DivContinut">
+            <h2>Autentificare</h2>
+            <form action="{{ url_for('meniu') }}" method="POST">
+        <div id="DivEmail">
+        <label for="EmailInput">Email:</label>
+        <input type="text" id="EmailInput" placeholder="Introdu adresa" required />
+        </div>
+        <div id="DivParola">
+        <label for="ParolaInput">Parolă:</label>
+        <input type="password" id="ParolaInput" placeholder="Introdu parola" required />
+        </div>
+        <br>
+      <button type="submit" id="ButonConectare">Conectează-te</button>
+    </form>
+    <br>
+    <a href="{{ url_for('inregistrare') }}">
+    <button type="button" id="ButonInregistrare">Înregistrare cont</button>
+    </a>
+        </div>
+    </body>
+</html>
