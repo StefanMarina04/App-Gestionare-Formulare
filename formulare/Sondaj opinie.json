@@ -1,0 +1,29 @@
+{
+  "titlu": "Sondaj de opinie - Viața în orașele mari",
+  "campuri": [
+    { "eticheta": "De câți ani trăiești în orașul tău?", "nume": "varsta", "tip": "number" },
+    {
+      "eticheta": "Ce tipuri de activități preferi? (dacă nu te atrage niciuna poți lăsa nebifat)",
+      "nume": "activitati",
+      "tip": "checkbox",
+      "optiuni": ["Activități sportive (terenuri de sport, parc, piste de alergare/bicicletă)", "Activități culturale (mers la muzeu, operă, teatru, spații culturale)", "Plimbări (în parc, centrul istoric, ș.a)", "Ieșit în oraș (localuri, cafenele)"]
+    },
+    {
+      "eticheta": "Care crezi că sunt principalele probleme ale orașului în care trăiești?",
+      "nume": "problemeOras",
+      "tip": "checkbox",
+      "optiuni": ["Mobilitate urbană redusă (transport public existent, dar insuficient)", "Lipsa alternativelor de transport (transport public/piste de bicicletă)", "Infrastructură deficitară", "Lipsa spațiilor culturale", "Lipsa de verdeață (parcuri, copaci, spații verzi în oraș)", "Lipsa localurilor/spațiilor comerciale/spațiilor pentru activități", "Termoficare", "Poluare", "Degradarea urbană (clădiri, infrastructură aflate în paragină)", "Costurile de trai"]
+    },
+    {
+      "eticheta": "Alege nivelul de satisfacție",
+      "nume": "satisfactie",
+      "tip": "range"
+    },
+    {
+      "eticheta": "Orașul tău",
+      "nume": "oras",
+      "tip": "select",
+      "optiuni": ["București", "Cluj", "Iași", "Constanța", "Timișoara",  "Oradea", "Brașov", "Sibiu", "Craiova"]
+    }
+  ]
+}

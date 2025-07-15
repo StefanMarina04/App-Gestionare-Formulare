@@ -1,0 +1,25 @@
+{
+  "titlu": "Propuneri amenajarea spațiului local comun",
+  "anonim": true,
+  "campuri": [
+    { "nume": "nume", "tip": "text", "eticheta": "Nume complet" },
+    { "nume": "email", "tip": "email", "eticheta": "Email" },
+    {
+      "nume": "parc",
+      "tip": "radio",
+      "eticheta": "Ați fi de acord cu amenajarea unui nou parc în cartier?",
+      "optiuni": ["Da", "Nu"]
+    },
+    {
+      "nume": "propuneri",
+      "tip": "textarea",
+      "eticheta": "Ce propuneri aveți pentru noul plan de amenajare locală?"
+    },
+    {
+      "nume": "varsta",
+      "tip": "radio",
+      "eticheta": "Din ce categorie de vârstă faceți parte?",
+      "optiuni": ["Copil", "Tânăr", "Adult", "Pensionar"]
+    }
+  ]
+}

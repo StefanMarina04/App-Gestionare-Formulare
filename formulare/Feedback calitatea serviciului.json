@@ -3,7 +3,7 @@
   "campuri": [
     {"nume": "nume", "tip": "text", "eticheta": "Nume complet"},
     {"nume": "email", "tip": "email", "eticheta": "Email"},
-    {"nume": "Cum apreciati calitatea serviciului prestat?", "tip": "textarea", "eticheta": "Cum apreciati calitatea serviciului prestat?"},
-    {"nume": "Ne-ati recomanda prietenilor si/sau familiei?", "tip": "textarea", "eticheta": "Ne-ati recomanda prietenilor si/sau familiei?"}
+    {"nume": "Cum apreciați calitatea serviciului prestat?", "tip": "textarea", "eticheta": "Cum apreciați calitatea serviciului prestat?"},
+    {"nume": "Ne-ați recomanda prietenilor și/sau familiei?", "tip": "textarea", "eticheta": "Ne-ați recomanda prietenilor și/sau familiei?"}
   ]
 }

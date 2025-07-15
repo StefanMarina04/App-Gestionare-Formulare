@@ -10,14 +10,56 @@
     <div id="DivContinut">
     <h2>{{ formular.titlu }}</h2>
     <form method="post" id="Formular">
-        {% for camp in formular.campuri %}
-            <label>{{ camp.eticheta }}</label><br>
-            {% if camp.tip == 'textarea' %}
-                <textarea name="{{ camp.nume }}" required></textarea><br>
+       {% for camp in formular.campuri %}
+        <label>{{ camp.eticheta }}</label><br>
+
+    {% if camp.tip == 'textarea' %}
+            <textarea name="{{ camp.nume }}" required></textarea><br>
+
+        {% elif camp.tip == 'radio' %}
+            {% for optiune in camp.optiuni %}
+                <label>
+                    <input type="radio" name="{{ camp.nume }}" value="{{ optiune }}" required>
+                    {{ optiune }}
+                </label><br>
+            {% endfor %}
+            <br>
+
+        {% elif camp.tip == 'checkbox' %}
+            {% for optiune in camp.optiuni %}
+                <label>
+                    <input type="checkbox" name="{{ camp.nume }}" value="{{ optiune }}">
+                    {{ optiune }}
+                </label><br>
+            {% endfor %}
+            <br>
+
+        {% elif camp.tip == 'select' %}
+            <select name="{{ camp.nume }}" required>
+                <option value="" disabled selected>Alege o opțiune</option>
+                {% for optiune in camp.optiuni %}
+                    <option value="{{ optiune }}">{{ optiune }}</option>
+                {% endfor %}
+            </select><br>
+
+        {% elif camp.tip == 'number' %}
+            {% if camp.nume.lower() == 'varsta' %}
+                <input type="number" name="{{ camp.nume }}" min="0" max="130" required><br>
             {% else %}
-                <input type="{{ camp.tip }}" name="{{ camp.nume }}" required><br>
-            {% endif %}
-        {% endfor %}
+                <input type="number" name="{{ camp.nume }}" required><br>
+        {% endif %}
+
+        {% elif camp.tip == 'range' %}
+            <input type="range" name="{{ camp.nume }}" min="0" max="100" step="1" required><br>
+
+        {% elif camp.tip == 'date' %}
+            <input type="date" name="{{ camp.nume }}" required><br>
+
+        {% else %}
+            <input type="{{ camp.tip }}" name="{{ camp.nume }}" required><br>
+        {% endif %}
+
+    {% endfor %}
         <br>
         <div id="DivButonTrimite">
         <button type="submit" id="ButonTrimite">Trimite</button>
