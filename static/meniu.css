@@ -89,7 +89,7 @@ a:active {
     margin-bottom: 15px;
 }
 
-#Dezauntentificare{
+#Deconectare{
     width: auto; 
     height: auto;
     display: flexbox;
@@ -111,7 +111,7 @@ a:active {
     transition: all 0.25s ease, text-shadow 0.2s ease;
 }
 
-#Dezauntentificare:hover{
+#Deconectare:hover{
     background-color: #074ba4;
     transform: scale(1.08);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
