@@ -14,21 +14,20 @@ pdfmetrics.registerFont(TTFont("Arial", "static/fonts/ARIAL.TTF"))
 pdfmetrics.registerFont(TTFont("ArialBD", "static/fonts/ARIALBD.TTF"))
 
 app = Flask(__name__)
-app.secret_key = "cheie_secreta"  # cheia pentru sesiuni
+app.secret_key = "cheie_secreta"
 import uuid
 id_completare = str(uuid.uuid4())
 
-# === Conexiune DB ===
 def get_db_connection():
     conn = pyodbc.connect(
         'DRIVER={ODBC Driver 17 for SQL Server};'
         'SERVER=LAPTOP-STEFAN20;'
+        #'SERVER=STEFAN2023\SQLEXPRESS;'
         'DATABASE=App-Gestionare-Formulare;'
         'Trusted_Connection=yes;'
     )
     return conn
 
-# === LOGIN ===
 @app.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -54,7 +53,6 @@ def login():
         
     return render_template("login.html")
 
-# === INREGISTRARE ===
 @app.route("/inregistrare", methods=["GET", "POST"])
 def inregistrare():
     if request.method == "POST":
@@ -69,12 +67,10 @@ def inregistrare():
             conn = get_db_connection()
             cursor = conn.cursor()
 
-            # Verificăm dacă utilizatorul există deja
             cursor.execute("SELECT * FROM Utilizatori WHERE Email = ?", email)
             if cursor.fetchone():
                 return "Emailul există deja!", 400
 
-            # Inserăm utilizatorul nou
             cursor.execute("""
                 INSERT INTO Utilizatori (Email, Parola, Nume_Complet) VALUES (?, ?, ?)
             """, email, parola, nume_complet)
@@ -90,13 +86,11 @@ def inregistrare():
 
     return render_template("inregistrare.html")
 
-# === DECONETARE ===
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect("/")
 
-# === MENIU ===
 @app.route("/meniu")
 def meniu():
     id_completare = str(uuid.uuid4())  
@@ -112,7 +106,6 @@ def meniu():
                 })
     return render_template("meniu.html", formulare=formulare)
 
-# === FORMULAR ===
 @app.route("/formular/<nume>", methods=["GET", "POST"])
 def formular(nume):
     try:
@@ -123,7 +116,6 @@ def formular(nume):
     user_data = {}
     id_utilizator = session.get("id_utilizator", 1)
 
-    # Doar dacă utilizatorul e logat (nu anonim)
     if id_utilizator != 1:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -149,7 +141,6 @@ def formular(nume):
 
             id_utilizator = session.get("id_utilizator", 1)
 
-            # dacă există deja ID_Completare pt formularul acesta, nu-l înlocuim
             if f"id_completare_{nume}" not in session:
                 session[f"id_completare_{nume}"] = str(uuid.uuid4())
 
@@ -180,7 +171,6 @@ def formular(nume):
 
     return render_template("formular.html", formular=template, user_data=user_data)
 
-# === CONFIRMARE ===
 @app.route("/formular_trimis")
 def raspuns():
     return render_template("formular_trimis.html")
@@ -189,7 +179,6 @@ def raspuns():
 def export_pdf():
     id_utilizator = session.get("id_utilizator", 1)
 
-    # Obținem ultimul ID_Completare din sesiune
     id_completare = None
     for key in session:
         if key.startswith("id_completare_"):
@@ -207,27 +196,33 @@ def export_pdf():
             WHERE ID_Completare = ?
         """, id_completare)
 
-        rezultate = cursor.fetchall()
+        raspunsuri = cursor.fetchall()
         cursor.close()
         conn.close()
 
-        if not rezultate:
+        if not raspunsuri:
             return "Nu s-au găsit date pentru export.", 404
 
-        # Creăm PDF în memorie
         buffer = io.BytesIO()
         pdf = canvas.Canvas(buffer)
         pdf.setTitle("Formular completat")
 
+        nume_formular = raspunsuri[0].Formular.replace(" ", "_")  
+        data = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"{nume_formular}_{data}.pdf"
+        
         y = 800
         pdf.setFont("ArialBD", 14)
-        pdf.drawString(50, y, f"Formular completat: {rezultate[0].Formular}")
+        pdf.drawString(50, y, f"Formular completat: {raspunsuri[0].Formular}")
         y -= 25
         pdf.setFont("Arial", 11)
-        pdf.drawString(50, y, f"Data: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        pdf.drawString(50, y, f"Completat la data de: {datetime.now().strftime('%d.%m.%Y %H:%M:%S')}")
         y -= 40
+        pdf.setFont("Arial", 11)
+        pdf.drawString(50, y, f"Răspunsuri:")
+        y -= 20
 
-        for rand in rezultate:
+        for rand in raspunsuri:
             if y < 50:
                 pdf.showPage()
                 y = 800
@@ -237,12 +232,11 @@ def export_pdf():
         pdf.save()
         buffer.seek(0)
 
-        return send_file(buffer, as_attachment=True, download_name="formular_completat.pdf", mimetype='application/pdf')
+        return send_file(buffer, as_attachment=True, download_name=filename, mimetype='application/pdf')
 
     except Exception as e:
         print("Eroare PDF:", e)
         return "Eroare la generarea PDF-ului.", 500
 
-# === RUN APP ===
 if __name__ == '__main__':
     app.run(debug=True)
