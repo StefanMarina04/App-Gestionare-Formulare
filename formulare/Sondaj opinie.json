@@ -1,5 +1,6 @@
 {
   "titlu": "Sondaj de opinie - Viața în orașele mari",
+  "anonim": true,
   "campuri": [
     { "eticheta": "De câți ani trăiești în orașul tău?", "nume": "varsta", "tip": "number" },
     {

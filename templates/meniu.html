@@ -11,9 +11,11 @@
         <h1>Formulare disponibile:</h1>
             <div id="ListaFormulare">
             <ul>
-                {% for f in formulare %}
-                    <li><a href="/formular/{{ f }}">{{ f }}</a></li>
-                {% endfor %}
+            {% for f in formulare %}
+                <li class="formular" data-anonim="{{ f.anonim|lower }}">
+                <a href="/formular/{{ f.id }}">{{ f.nume }}</a>
+                </li>
+            {% endfor %}
             </ul>
             </div>
         <div id="ButonDeconectare">

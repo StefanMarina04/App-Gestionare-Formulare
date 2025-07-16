@@ -1,0 +1,25 @@
+{
+  "titlu": "Feedback facultate",
+  "anonim": true,
+  "campuri": [
+        {
+      "eticheta": "Anul de studiu",
+      "nume": "AnStudiu",
+      "tip": "select",
+      "optiuni": ["Anul I", "Anul II", "Anul III", "Anul IV", "Master"]
+    },
+    {
+      "eticheta": "Specializare",
+      "nume": "Specializare",
+      "tip": "select",
+      "optiuni": ["Calculatoare", "Comunicații", "ERAV", "EIAV", "AVMO", "ESCA", "TOPO", "DPI", "BAT", "SBDM", "Construcții"]
+    },
+    {
+      "nume": "CalitateActEducational",
+      "tip": "radio",
+      "eticheta": "Cum apreciati calitatea actului educațional oferit?",
+      "optiuni": ["Foarte bună", "Bună", "Satisfăcătoare", "Nesatisfăcătoare", "Proastă", "Foarte proastă"]
+    },
+    {"nume": "PropuneriCursuri", "tip": "textarea", "eticheta": "Aveți propuneri pentru îmbunătățirea cursurilor și/sau a performanței cadrelor didactice?"}
+  ]
+}

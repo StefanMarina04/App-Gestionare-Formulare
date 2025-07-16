@@ -1,6 +1,6 @@
 {
   "titlu": "Propuneri amenajarea spațiului local comun",
-  "anonim": true,
+  "anonim": false,
   "campuri": [
     { "nume": "nume", "tip": "text", "eticheta": "Nume complet" },
     { "nume": "email", "tip": "email", "eticheta": "Email" },

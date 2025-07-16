@@ -31,8 +31,18 @@ def inregistrare():
 
 @app.route("/meniu", methods=["GET", "POST"])
 def meniu():
-    formulare = [f.split(".")[0] for f in os.listdir("formulare") if f.endswith(".json")]
+    formulare = []
+    for f in os.listdir("formulare"):
+        if f.endswith(".json"):
+            with open(os.path.join("formulare", f), encoding="utf-8") as file:
+                continut = json.load(file)
+                formulare.append({
+                    "nume": continut.get("titlu", f.split(".")[0]),
+                    "id": f.split(".")[0],
+                    "anonim": continut.get("anonim", False)
+                })
     return render_template("meniu.html", formulare=formulare)
+
 
 @app.route("/formular/<nume>", methods=["GET", "POST"])
 def formular(nume):

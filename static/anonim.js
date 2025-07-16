@@ -1,34 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
     const butonAnonim = document.getElementById("ButonAnonim");
+    const butonDeconectare = document.getElementById("ButonDeconectare");
 
     if (butonAnonim) {
         butonAnonim.addEventListener("click", () => {
             sessionStorage.setItem("Anonim", "true");
             console.log("A fost selectată opțiunea - completare anonimă");
-            window.location.href = "/meniu"; 
+            window.location.href = "/meniu";
         });
     }
 
     const esteAnonim = sessionStorage.getItem("Anonim") === "true";
 
     if (esteAnonim) {
-        const formulare = document.querySelectorAll(".formular");
-
-        formulare.forEach(formular => {
-            const anonimPermis = formular.dataset.anonim === "true";
-            if (!anonimPermis) {
-                formular.style.display = "none";
+        document.querySelectorAll(".formular").forEach(el => {
+            if (el.dataset.anonim !== "true") {
+                el.style.display = "none";
             }
         });
     }
-
-    const butonDeconectare = document.getElementById("ButonDeconectare");
 
     if (butonDeconectare) {
         butonDeconectare.addEventListener("click", () => {
             sessionStorage.removeItem("Anonim");
             console.log("Utilizator deconectat. Anonim resetat.");
-            window.location.href = "/"; 
+            window.location.href = "/";
         });
     }
 });
