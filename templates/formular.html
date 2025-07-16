@@ -54,9 +54,10 @@
 
         {% elif camp.tip == 'date' %}
             <input type="date" name="{{ camp.nume }}" required><br>
-
         {% else %}
-            <input type="{{ camp.tip }}" name="{{ camp.nume }}" required><br>
+            {% set nume_camp = camp.nume.lower() %}
+        <input type="{{ camp.tip }}" name="{{ camp.nume }}"
+        value="{% if user_data and 'email' in nume_camp %}{{ user_data['email'] }}{% elif user_data and 'nume' in nume_camp %}{{ user_data['nume'] }}{% endif %}"required><br>
         {% endif %}
 
     {% endfor %}

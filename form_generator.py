@@ -1,7 +1,17 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, send_file
 import json
 import os
 import pyodbc
+
+from reportlab.pdfgen import canvas
+import io
+from datetime import datetime
+
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase import pdfmetrics
+
+pdfmetrics.registerFont(TTFont("Arial", "static/fonts/ARIAL.TTF"))
+pdfmetrics.registerFont(TTFont("ArialBD", "static/fonts/ARIALBD.TTF"))
 
 app = Flask(__name__)
 app.secret_key = "cheie_secreta"  # cheia pentru sesiuni
@@ -110,6 +120,24 @@ def formular(nume):
             template = json.load(f)
     except FileNotFoundError:
         return "Formularul nu există!", 404
+    user_data = {}
+    id_utilizator = session.get("id_utilizator", 1)
+
+    # Doar dacă utilizatorul e logat (nu anonim)
+    if id_utilizator != 1:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT Email, Nume_Complet FROM Utilizatori WHERE ID_Utilizator = ?", id_utilizator)
+        row = cursor.fetchone()
+        if row:
+            user_data["email"] = row.Email
+            user_data["nume complet"] = row.Nume_Complet
+            user_data["nume"] = row.Nume_Complet
+            user_data["nume_complet"] = row.Nume_Complet
+            user_data["numeinput"] = row.Nume_Complet
+        cursor.close()
+        conn.close()
+
 
     if request.method == "POST":
         date_primite = request.form.to_dict(flat=False)
@@ -121,7 +149,7 @@ def formular(nume):
 
             id_utilizator = session.get("id_utilizator", 1)
 
-            # 🔒 dacă există deja ID_Completare pt formularul acesta, nu-l înlocuim
+            # dacă există deja ID_Completare pt formularul acesta, nu-l înlocuim
             if f"id_completare_{nume}" not in session:
                 session[f"id_completare_{nume}"] = str(uuid.uuid4())
 
@@ -150,12 +178,70 @@ def formular(nume):
 
         return redirect("/formular_trimis")
 
-    return render_template("formular.html", formular=template)
+    return render_template("formular.html", formular=template, user_data=user_data)
 
 # === CONFIRMARE ===
 @app.route("/formular_trimis")
 def raspuns():
     return render_template("formular_trimis.html")
+
+@app.route("/export_pdf")
+def export_pdf():
+    id_utilizator = session.get("id_utilizator", 1)
+
+    # Obținem ultimul ID_Completare din sesiune
+    id_completare = None
+    for key in session:
+        if key.startswith("id_completare_"):
+            id_completare = session[key]
+            break
+
+    if not id_completare:
+        return "Nu există un formular completat recent!", 400
+
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT Formular, Camp, Valoare FROM Raspunsuri
+            WHERE ID_Completare = ?
+        """, id_completare)
+
+        rezultate = cursor.fetchall()
+        cursor.close()
+        conn.close()
+
+        if not rezultate:
+            return "Nu s-au găsit date pentru export.", 404
+
+        # Creăm PDF în memorie
+        buffer = io.BytesIO()
+        pdf = canvas.Canvas(buffer)
+        pdf.setTitle("Formular completat")
+
+        y = 800
+        pdf.setFont("ArialBD", 14)
+        pdf.drawString(50, y, f"Formular completat: {rezultate[0].Formular}")
+        y -= 25
+        pdf.setFont("Arial", 11)
+        pdf.drawString(50, y, f"Data: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        y -= 40
+
+        for rand in rezultate:
+            if y < 50:
+                pdf.showPage()
+                y = 800
+            pdf.drawString(50, y, f"{rand.Camp}: {rand.Valoare}")
+            y -= 20
+
+        pdf.save()
+        buffer.seek(0)
+
+        return send_file(buffer, as_attachment=True, download_name="formular_completat.pdf", mimetype='application/pdf')
+
+    except Exception as e:
+        print("Eroare PDF:", e)
+        return "Eroare la generarea PDF-ului.", 500
 
 # === RUN APP ===
 if __name__ == '__main__':
