@@ -139,3 +139,11 @@ body{
     text-decoration: none;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
+
+.alerta {
+    color: #fff;
+    background-color: #c0392b;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}

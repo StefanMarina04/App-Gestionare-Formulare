@@ -12,29 +12,32 @@
         <form method="POST">
             <div id="DivEmail">
             <label for="EmailInput">Email:</label>
-            <input type="email" name="EmailInput" required>
+            <input type="email" name="EmailInput" id="EmailInput" required>
             </div>
             <div id="DivNumeComplet">
                 <label for="NumeInput">Nume complet</label>
-            <input type="text" id="NumeInput" required>
+            <input type="text" name="NumeInput" id="NumeInput" required>
             </div>
             <div id="DivParola">
                 <label for="ParolaInput">Parolă:</label>
-                <input type="password" id="ParolaInput" required>
+                <input type="password" name="ParolaInput" id="ParolaInput" required>
                 <span id="togglePassword1" class="fa fa-eye" style="cursor: pointer;"></span>    
             </div>
             <div id="DivConfirmaParola">
                 <label for="ConfirmaParolaInput">Confirmă parola:</label>
-                <input type="password" id="ConfirmaParolaInput" required>
+                <input type="password" name="ConfirmareParola" id="ConfirmaParolaInput" required>
                 <span id="togglePassword2" class="fa fa-eye" style="cursor: pointer;"></span>    
             </div>
+            {% if eroare %}
+            <div class="alerta">{{ eroare }}</div>
+            {% endif %}
             <br>
             <button type="submit" id="ButonInregistrare">Înregistrează-te</button>
         </form>
             <div id="ButonInapoi">
                 <button type="button" id="Inapoi" onclick="history.back()">Anulează</button>
             </div>
-        </div>
+        </div> 
     </div>
     <script src="{{ url_for('static', filename='toggle_password_hiding.js') }}"></script>
 </body>

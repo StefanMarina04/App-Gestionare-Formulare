@@ -9,16 +9,19 @@
     <body>
         <div id="DivContinut">
             <h2>Autentificare</h2>
-            <form action="{{ url_for('meniu') }}" method="POST">
+            <form method="POST">
         <div id="DivEmail">
         <label for="EmailInput">Email:</label>
-        <input type="email" id="EmailInput" placeholder="Introdu adresa" required />
+        <input type="email" name="EmailInput" id="EmailInput" placeholder="Introdu adresa" required />
         </div>
         <div id="DivParola">
         <label for="ParolaInput">Parolă:</label>
-        <input type="password" id="ParolaInput" placeholder="Introdu parola" required class="show-control"/>
+        <input type="password" name="ParolaInput" id="ParolaInput" placeholder="Introdu parola" required class="show-control"/>
         <span id="togglePassword1" class="fa fa-eye" style="cursor: pointer;"></span>
     </div>
+        {% if eroare %}
+        <div class="alerta">{{ eroare }}</div>
+        {% endif %}
         <br>
       <button type="submit" id="ButonConectare">Conectează-te</button>
     </form>
