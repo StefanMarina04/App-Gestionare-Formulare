@@ -164,8 +164,8 @@ def formular(nume):
             conn.close()
 
         except Exception as e:
-            print("Eroare la salvare în baza de date:", e)
-            return "A apărut o eroare la salvarea datelor.", 500
+            print("Eroare la salvarea în baza de date:", e)
+            return "A apărut o eroare în timpul salvării datelor.", 500
 
         return redirect("/formular_trimis")
 
