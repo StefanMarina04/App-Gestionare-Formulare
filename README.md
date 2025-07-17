@@ -16,7 +16,7 @@ Funcționalități implementate:
 * Stilizarea paginilor și a elementelor de interfață (butoane, câmpuri input) a fost realizată cu fișiere CSS asociate paginilor.
 * Fontul utilizat pe site este un font disponibil pe Google Fonts.
 
-================
+---
 Pentru rulare Visual Studio Code + Python și:
 - comenzile în terminal pentru instalare:
 pip install flask
