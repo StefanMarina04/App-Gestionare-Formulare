@@ -19,7 +19,7 @@ Funcționalități implementate:
 ---
 Pentru rulare Visual Studio Code + Python și:
 - comenzile în terminal pentru instalare:
-pip install flask
-pip install pyodbc
-pip install reportlab
+- pip install flask
+- pip install pyodbc
+- pip install reportlab
 
